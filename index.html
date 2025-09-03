@@ -3,132 +3,149 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Προφίλ Εργαζομένου</title>
+  <title>Προφίλ Εργαζομένου – SSPC</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
   <style>
     body {
       margin: 0;
-      font-family: sans-serif;
-      background-color: #f0f2f5;
+      font-family: 'Roboto', sans-serif;
+      background-color: #d0e8ff;
     }
 
     .header {
-      background-color: #007BFF;
-      color: white;
+      background-color: #0077cc;
       text-align: center;
-      padding: 20px 10px;
-      font-size: 24px;
-    }
-
-    .card {
-      background: white;
-      max-width: 400px;
-      margin: 30px auto;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       padding: 20px;
-      text-align: center;
+      position: relative;
     }
 
-    .profile-pic {
+    .header img.logo {
+      max-width: 200px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .header h1 {
+      color: white;
+      margin: 10px 0 0 0;
+      font-size: 20px;
+    }
+
+    .profile-photo {
       width: 120px;
       height: 120px;
       border-radius: 50%;
       object-fit: cover;
-      margin-bottom: 15px;
-      border: 4px solid #007BFF;
+      background-color: white;
+      border: 4px solid white;
+      margin: 20px auto 0 auto;
+      display: block;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
     }
 
-    .info {
-      text-align: left;
-      margin-top: 20px;
+    .card {
+      background: white;
+      max-width: 450px;
+      margin: 30px auto;
+      border-radius: 16px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.2);
+      padding: 20px;
+      text-align: center;
+      font-family: 'Roboto', sans-serif;
     }
 
-    .info p {
-      margin: 8px 0;
+    .card p {
+      margin: 10px 0;
       font-size: 16px;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
     }
 
-    #saveBtn {
-      margin-top: 20px;
-      padding: 10px 20px;
-      font-size: 16px;
-      background-color: #007BFF;
+    .card p strong {
+      font-weight: bold;
+      font-style: normal;
+      min-width: 100px;
+    }
+
+    .card p span {
+      font-weight: normal;
+      font-style: italic;
+      margin-left: 8px;
+      flex: 1;
+    }
+
+    .card a {
+      color: #0077cc;
+      text-decoration: none;
+      font-weight: normal;
+      font-style: italic;
+    }
+
+    .card a:hover {
+      text-decoration: underline;
+    }
+
+    iframe {
+      width: 100%;
+      max-width: 450px;
+      height: 300px;
+      border: 0;
+      border-radius: 12px;
+      display: block;
+      margin: 20px auto;
+    }
+
+    .social {
+      text-align: center;
+      margin: 30px 0 50px;
+    }
+
+    .social a {
+      display: inline-block;
+      margin: 10px 10px;
+      padding: 10px 16px;
+      background-color: #0077cc;
       color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
     }
 
-    #saveBtn:hover {
-      background-color: #0056b3;
+    .social a:hover {
+      background-color: #005fa3;
     }
   </style>
 </head>
 <body>
-  <div class="header">Προφίλ Εργαζομένου</div>
-
-  <div class="card" id="cardContent">
-    <img src="https://via.placeholder.com/120" alt="Φωτογραφία" class="profile-pic" />
-    <div class="info" id="result">Φόρτωση...</div>
-    <button id="saveBtn" style="display:none;">Αποθήκευση ως Επαφή</button>
+  <div class="header">
+    <img src="sspc.png" alt="SSPC Logo" class="logo" />
+    <h1>Software Solution P.C.</h1>
+    <!-- Κυκλική φωτογραφία -->
+    <img src="fotomou.jpg" alt="Φωτογραφία Προφίλ" class="profile-photo" />
   </div>
 
-  <script>
-    const params = new URLSearchParams(window.location.search);
-    const id = params.get("id");
+  <div class="card">
+    <p><strong>Όνομα:</strong> <span>Αγγελίδης Γεώργιος</span></p>
+    <p><strong>Τηλέφωνο:</strong> <span><a href="tel:+306951907712">+30 6951 907712</a></span></p>
+    <p><strong>Θέση:</strong> <span>Software Engineer</span></p>
+    <p><strong>Ωράριο:</strong> <span>09:00 - 17:00</span></p>
+    <p><strong>Email:</strong> <span><a href="mailto:aggelidis@sspc.gr">aggelidis@sspc.gr</a></span></p>
+  </div>
+  <!-- Social + vCard κουμπί -->
+  <div class="social">
+    <a href="https://www.linkedin.com/in/george-angelidis-4a8453308/" target="_blank">🔗 LinkedIn</a>
+    <a href="https://www.facebook.com/aggela90/" target="_blank">📘 Facebook</a>
+    <a href="aggelidis.vcf" download>📥 Αποθήκευση Επαφής</a>
+  </div>
+  <!-- Χάρτης -->
+  <iframe src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d100606.47320290284!2d23.707445108188324!3d38.00157335300039!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x14a1bd5ab9611973%3A0x96194850f345c053!2sLeof.%20Mesogeion%20196%2C%20Cholargos%20155%2061!3m2!1d38.0016021!2d23.7898461!5e0!3m2!1sen!2sgr!4v1753865743158!5m2!1sen!2sgr" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-    const database = {
-      "123456": {
-        name: "Γιώργος Νικολάου",
-        phone: "+306941234567",
-        position: "Αποθηκάριος",
-        shift: "07:00 - 15:00",
-        photo: "https://randomuser.me/api/portraits/men/45.jpg"
-      },
-      "444999": {
-        name: "Μαρία Κωνσταντίνου",
-        phone: "+306901234567",
-        position: "Γραμματεία",
-        shift: "09:00 - 17:00",
-        photo: "https://randomuser.me/api/portraits/women/65.jpg"
-      }
-    };
 
-    const user = database[id];
-    const resultDiv = document.getElementById("result");
-    const photoEl = document.querySelector(".profile-pic");
-
-    if (user) {
-      resultDiv.innerHTML = `
-        <p><strong>Όνομα:</strong> ${user.name}</p>
-        <p><strong>Θέση:</strong> ${user.position}</p>
-        <p><strong>Τηλέφωνο:</strong> ${user.phone}</p>
-        <p><strong>Ωράριο:</strong> ${user.shift}</p>
-      `;
-      photoEl.src = user.photo;
-      document.getElementById("saveBtn").style.display = "inline-block";
-    } else {
-      resultDiv.innerText = "Δεν βρέθηκαν στοιχεία.";
-    }
-
-    document.getElementById("saveBtn").addEventListener("click", () => {
-      const vcard =
-`BEGIN:VCARD
-VERSION:3.0
-FN:${user.name}
-TEL;TYPE=CELL:${user.phone}
-TITLE:${user.position}
-NOTE:Ωράριο: ${user.shift}
-END:VCARD`;
-
-      const blob = new Blob([vcard], { type: "text/vcard" });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = `${user.name}.vcf`;
-      a.click();
-      URL.revokeObjectURL(url);
-    });
-  </script>
 </body>
 </html>
