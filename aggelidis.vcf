@@ -1,0 +1,11 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Αγγελιδης;Γεωργιος;;;
+FN:Γεωργιος Αγγελιδης
+ORG:Software Solution P.C.
+TITLE:Software Engineer
+TEL;TYPE=WORK,VOICE:+30 6951 907712
+EMAIL;TYPE=PREF,INTERNET:aggelidis@sspc.gr
+URL:https://www.linkedin.com/in/george-angelidis-4a8453308/
+ADR;TYPE=WORK:;;Leof. Mesogeion 196;Cholargos;;155 61;Greece
+END:VCARD

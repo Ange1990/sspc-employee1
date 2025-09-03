@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Προφίλ Εργαζομένου</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background-color: #f0f2f5;
+    }
+
+    .header {
+      background-color: #007BFF;
+      color: white;
+      text-align: center;
+      padding: 20px 10px;
+      font-size: 24px;
+    }
+
+    .card {
+      background: white;
+      max-width: 400px;
+      margin: 30px auto;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 20px;
+      text-align: center;
+    }
+
+    .profile-pic {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
+      border: 4px solid #007BFF;
+    }
+
+    .info {
+      text-align: left;
+      margin-top: 20px;
+    }
+
+    .info p {
+      margin: 8px 0;
+      font-size: 16px;
+    }
+
+    #saveBtn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    #saveBtn:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">Προφίλ Εργαζομένου</div>
+
+  <div class="card" id="cardContent">
+    <img src="https://via.placeholder.com/120" alt="Φωτογραφία" class="profile-pic" />
+    <div class="info" id="result">Φόρτωση...</div>
+    <button id="saveBtn" style="display:none;">Αποθήκευση ως Επαφή</button>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+
+    const database = {
+      "123456": {
+        name: "Γιώργος Νικολάου",
+        phone: "+306941234567",
+        position: "Αποθηκάριος",
+        shift: "07:00 - 15:00",
+        photo: "https://randomuser.me/api/portraits/men/45.jpg"
+      },
+      "444999": {
+        name: "Μαρία Κωνσταντίνου",
+        phone: "+306901234567",
+        position: "Γραμματεία",
+        shift: "09:00 - 17:00",
+        photo: "https://randomuser.me/api/portraits/women/65.jpg"
+      }
+    };
+
+    const user = database[id];
+    const resultDiv = document.getElementById("result");
+    const photoEl = document.querySelector(".profile-pic");
+
+    if (user) {
+      resultDiv.innerHTML = `
+        <p><strong>Όνομα:</strong> ${user.name}</p>
+        <p><strong>Θέση:</strong> ${user.position}</p>
+        <p><strong>Τηλέφωνο:</strong> ${user.phone}</p>
+        <p><strong>Ωράριο:</strong> ${user.shift}</p>
+      `;
+      photoEl.src = user.photo;
+      document.getElementById("saveBtn").style.display = "inline-block";
+    } else {
+      resultDiv.innerText = "Δεν βρέθηκαν στοιχεία.";
+    }
+
+    document.getElementById("saveBtn").addEventListener("click", () => {
+      const vcard =
+`BEGIN:VCARD
+VERSION:3.0
+FN:${user.name}
+TEL;TYPE=CELL:${user.phone}
+TITLE:${user.position}
+NOTE:Ωράριο: ${user.shift}
+END:VCARD`;
+
+      const blob = new Blob([vcard], { type: "text/vcard" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `${user.name}.vcf`;
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+  </script>
+</body>
+</html>
